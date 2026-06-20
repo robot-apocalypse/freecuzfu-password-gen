@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Password Generator">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/icon-192.svg">
+  <link rel="stylesheet" href="/style.css">
+  <style>:root { --accent: #f43f5e; }</style>
+  <title>Password Generator — FreeCuzFU</title>
+</head>
+<body>
+
+  <a href="https://freecuzfu.com" class="back-link">← FreeCuzFU</a>
+  <button id="install-btn" aria-label="Install app" hidden>↓ Install</button>
+
+  <main id="app">
+    <h1>Password Generator</h1>
+
+    <div class="output-wrap">
+      <div id="password" role="textbox" aria-readonly="true" aria-label="Generated password"></div>
+      <button id="copy-btn" aria-label="Copy password">Copy</button>
+    </div>
+
+    <div class="strength-bar-wrap" aria-label="Password strength">
+      <div id="strength-bar"><div id="strength-fill"></div></div>
+      <span id="strength-label"></span>
+    </div>
+
+    <div class="controls">
+      <div class="length-row">
+        <label for="length-slider">Length</label>
+        <input type="range" id="length-slider" min="8" max="64" value="16">
+        <span id="length-val">16</span>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle"><input type="checkbox" id="opt-upper" checked><span>A–Z</span></label>
+        <label class="toggle"><input type="checkbox" id="opt-lower" checked><span>a–z</span></label>
+        <label class="toggle"><input type="checkbox" id="opt-digits" checked><span>0–9</span></label>
+        <label class="toggle"><input type="checkbox" id="opt-symbols"><span>!@#…</span></label>
+      </div>
+    </div>
+
+    <button id="gen-btn">Generate</button>
+  </main>
+
+  <script src="/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
